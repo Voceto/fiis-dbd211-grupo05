@@ -93,6 +93,12 @@ INSERT INTO PROYECTO VALUES ('B&PS-PAC-PC-0013','ponton principal','en ejecucion
 INSERT INTO PROYECTO VALUES ('B&PS-PAC-PC-0014','andamio','en ejecucion','14-02-2021','05-10-2021','10-02-2021',null,'94652126');
 INSERT INTO PROYECTO VALUES ('B&PS-PAC-PC-0015','gabarra','en ejecucion','10-03-2021','10-08-2021','15-03-2021',null,'85267264');
 
+INSERT INTO TIPOACTIVIDAD VALUES( 'A0001','INSPECCION VISUAL DE SOLDADURA','Se realiza la inspeccion visual de la soldadura','ISO-15000',1,'INI','IV','PC1');
+INSERT INTO TIPOACTIVIDAD VALUES( 'A0002','FABRICACION DE FLOTADORES','Se realiza la fabricación de flotadores','ISO-1530',3,'INI','ID','PC3');
+INSERT INTO TIPOACTIVIDAD VALUES( 'A0003','INSPECCION CON TINTES','Se realiza la inspeccion de soldadura usando tintes penetrantes','ISO-15860',2,'FIN','END','PC2');
+INSERT INTO TIPOACTIVIDAD VALUES( 'A0004','CONTROLES DIMENSIONALES','Se realiza el control dimensional','ISO-15050',4,'ACT','END','PC1');
+INSERT INTO TIPOACTIVIDAD VALUES( 'A0005','PROCEDIMIENTO DE ULTRASONIDO','Se realizan pruebas utilizando ultrasonido','ISO-15670',1,'FIN','END','PC3');
+
 INSERT INTO ACTIVIDAD VALUES ('B&PS-PAC-PC-A50', 'A0001','NO INICIADA', '15-07-2021', '22-08-2021',null,null,'B&PS-PAC-PC-0001');
 INSERT INTO ACTIVIDAD VALUES ('B&PS-PAC-PC-A50', 'A0002','NO INICIADA', '25-08-2021', '23-09-2021',null,null,'B&PS-PAC-PC-0001');
 INSERT INTO ACTIVIDAD VALUES ('B&PS-PAC-PC-A50', 'A0003','NO INICIADA', '23-09-2021', '20-10-2021',null,null,'B&PS-PAC-PC-0001');
@@ -140,12 +146,6 @@ INSERT INTO ACTIVIDAD VALUES ('B&PS-PAC-PC-A63', 'A0004','EN EJECUCION', '17-06-
 INSERT INTO ACTIVIDAD VALUES ('B&PS-PAC-PC-A64', 'A0002','FINALIZADA', '15-03-2021', '30-05-2021','17-03-2021','31-05-2021','B&PS-PAC-PC-0015');
 INSERT INTO ACTIVIDAD VALUES ('B&PS-PAC-PC-A64', 'A0005','NO INICIADA', '31-05-2021', '10-08-2021',null,null,'B&PS-PAC-PC-0015');
 INSERT INTO ACTIVIDAD VALUES ('B&PS-PAC-PC-A64', 'A0003','NO INICIADA', '25-04-2021', '15-07-2021',null,null,'B&PS-PAC-PC-0015');
-
-INSERT INTO TIPOACTIVIDAD VALUES( 'A0001','INSPECCION VISUAL DE SOLDADURA','Se realiza la inspeccion visual de la soldadura','ISO-15000',1,'INI','IV','PC1');
-INSERT INTO TIPOACTIVIDAD VALUES( 'A0002','FABRICACION DE FLOTADORES','Se realiza la fabricación de flotadores','ISO-1530',3,'INI','ID','PC3');
-INSERT INTO TIPOACTIVIDAD VALUES( 'A0003','INSPECCION CON TINTES','Se realiza la inspeccion de soldadura usando tintes penetrantes','ISO-15860',2,'FIN','END','PC2');
-INSERT INTO TIPOACTIVIDAD VALUES( 'A0004','CONTROLES DIMENSIONALES','Se realiza el control dimensional','ISO-15050',4,'ACT','END','PC1');
-INSERT INTO TIPOACTIVIDAD VALUES( 'A0005','PROCEDIMIENTO DE ULTRASONIDO','Se realizan pruebas utilizando ultrasonido','ISO-15670',1,'FIN','END','PC3');
 
 INSERT INTO INFORME VALUES ('B&PS-INFO-0001' ,'Informe de Trazabilidad', '05-03-2021','WWW.INFO.PLANO1.COM',       'B&PS-PAC-PC-A50', 'A0001',82104847);
 INSERT INTO INFORME VALUES ('B&PS-INFO-0002' ,'Informe de Inspeccion Visual', '26-04-2021', 'WWW.INFO.PLANO2.COM', 'B&PS-PAC-PC-A50', 'A0002',82104847);
@@ -208,24 +208,6 @@ insert into STAFF_PROYECTO (DNI_EMPLEADO, CODIGO_PROY, ROL_PROY, FECHA_INICIO_VI
 insert into STAFF_PROYECTO (DNI_EMPLEADO, CODIGO_PROY, ROL_PROY, FECHA_INICIO_VIGENCIA, FECHA_FIN_VIGENCIA) values ('99926400', 'B&PS-PAC-PC-0013', 'Jefe', '10/09/2019', '14/10/2021');
 insert into STAFF_PROYECTO (DNI_EMPLEADO, CODIGO_PROY, ROL_PROY, FECHA_INICIO_VIGENCIA, FECHA_FIN_VIGENCIA) values ('90787587', 'B&PS-PAC-PC-0014', 'Jefe', '19/01/2020', '10/07/2021');
 insert into STAFF_PROYECTO (DNI_EMPLEADO, CODIGO_PROY, ROL_PROY, FECHA_INICIO_VIGENCIA, FECHA_FIN_VIGENCIA) values ('80424466', 'B&PS-PAC-PC-0015', 'Jefe', '01/09/2020', '25/06/2021');
-insert into COMENTARIO (ORDEN, FECHA, CONTENIDO, USERNAME, ID_OBSERVACION) values (1, '19/03/2021', 'bibendum imperdiet nullam orci pede venenatis non sodales sed tincidunt eu felis fusce posuere felis sed lacus morbi sem', 'jcicchelli5', 1);
-insert into COMENTARIO (ORDEN, FECHA, CONTENIDO, USERNAME, ID_OBSERVACION) values (2, '20/03/2021', 'sed augue aliquam erat volutpat in congue etiam justo etiam pretium iaculis justo', 'epaddonf', 1);
-insert into COMENTARIO (ORDEN, FECHA, CONTENIDO, USERNAME, ID_OBSERVACION) values (3, '21/03/2021', 'nunc purus phasellus in felis donec semper sapien a libero nam dui proin leo odio porttitor id consequat in consequat', 'jcicchelli5', 1);
-insert into COMENTARIO (ORDEN, FECHA, CONTENIDO, USERNAME, ID_OBSERVACION) values (1, '29/04/2021', 'nulla facilisi cras non velit nec nisi vulputate nonummy maecenas tincidunt lacus', 'jcicchelli5', 2);
-insert into COMENTARIO (ORDEN, FECHA, CONTENIDO, USERNAME, ID_OBSERVACION) values (1, '28/02/2021', 'consequat nulla nisl nunc nisl duis bibendum felis sed interdum venenatis', 'jcicchelli5', 3);
-insert into COMENTARIO (ORDEN, FECHA, CONTENIDO, USERNAME, ID_OBSERVACION) values (2, '01/03/2021', 'quam sapien varius ut blandit non interdum in ante vestibulum ante ipsum primis in faucibus orci luctus et', 'qpeardeg', 3);
-insert into COMENTARIO (ORDEN, FECHA, CONTENIDO, USERNAME, ID_OBSERVACION) values (1, '28/04/2021', 'sed tincidunt eu felis fusce posuere felis sed lacus morbi sem mauris laoreet ut rhoncus aliquet', 'mohrt6', 6);
-insert into COMENTARIO (ORDEN, FECHA, CONTENIDO, USERNAME, ID_OBSERVACION) values (2, '29/04/2021', 'adipiscing elit proin risus praesent lectus vestibulum quam sapien varius ut blandit non interdum in ante vestibulum ante ipsum', 'izoldh', 6);
-insert into COMENTARIO (ORDEN, FECHA, CONTENIDO, USERNAME, ID_OBSERVACION) values (3, '30/04/2021', 'ac neque duis bibendum morbi non quam nec dui luctus rutrum nulla tellus', 'mohrt6', 6);
-insert into COMENTARIO (ORDEN, FECHA, CONTENIDO, USERNAME, ID_OBSERVACION) values (1, '12/03/2021', 'dictumst aliquam augue quam sollicitudin vitae consectetuer eget rutrum at', 'dmeasor7', 7);
-insert into COMENTARIO (ORDEN, FECHA, CONTENIDO, USERNAME, ID_OBSERVACION) values (1, '21/05/2021', 'diam cras pellentesque volutpat dui maecenas tristique est et tempus semper est quam pharetra magna ac consequat metus sapien', 'dmcgeachey8', 9);
-insert into COMENTARIO (ORDEN, FECHA, CONTENIDO, USERNAME, ID_OBSERVACION) values (2, '22/05/2021', 'vulputate elementum nullam varius nulla facilisi cras non velit nec nisi vulputate nonummy maecenas tincidunt lacus', 'ahupek', 9);
-insert into COMENTARIO (ORDEN, FECHA, CONTENIDO, USERNAME, ID_OBSERVACION) values (1, '19/01/2021', 'curabitur in libero ut massa volutpat convallis morbi odio odio elementum eu interdum eu tincidunt in leo maecenas', 'tgoingb', 11);
-insert into COMENTARIO (ORDEN, FECHA, CONTENIDO, USERNAME, ID_OBSERVACION) values (2, '19/01/2021', 'morbi porttitor lorem id ligula suspendisse ornare consequat lectus in est risus auctor sed tristique in', 'atearlen', 11);
-insert into COMENTARIO (ORDEN, FECHA, CONTENIDO, USERNAME, ID_OBSERVACION) values (3, '20/01/2021', 'mauris laoreet ut rhoncus aliquet pulvinar sed nisl nunc rhoncus dui vel sem', 'tgoingb', 11);
-insert into COMENTARIO (ORDEN, FECHA, CONTENIDO, USERNAME, ID_OBSERVACION) values (1, '29/04/2021', 'natoque penatibus et magnis dis parturient montes nascetur ridiculus mus etiam vel augue vestibulum rutrum rutrum neque aenean auctor', 'tgoingb', 12);
-insert into COMENTARIO (ORDEN, FECHA, CONTENIDO, USERNAME, ID_OBSERVACION) values (1, '18/05/2021', 'elit proin interdum mauris non ligula pellentesque ultrices phasellus id sapien in sapien', 'ljeansd', 15);
-insert into COMENTARIO (ORDEN, FECHA, CONTENIDO, USERNAME, ID_OBSERVACION) values (2, '19/05/2021', 'congue etiam justo etiam pretium iaculis justo in hac habitasse', 'jrawsthorner', 15);
 
 CREATE SEQUENCE OBS_ID
  START WITH     1
@@ -246,3 +228,21 @@ INSERT INTO OBSERVACION VALUES (nextval('OBS_ID'), 'Buenas tardes, Sr.....Me par
 INSERT INTO OBSERVACION VALUES (nextval('OBS_ID'), 'Buenas tardes, Sr.....Este informe no pertenece a esta actividad',         'ABIERTO',   to_date('19-05-2021','dd-mm-yyyy'),null, 'B&PS-INFO-0033' );
 INSERT INTO OBSERVACION VALUES (nextval('OBS_ID'), 'Buenas tardes, Sr.....Este informe no pertenece a este proyecto',          'ABIERTO',   to_date('07-03-2021','dd-mm-yyyy'),null, 'B&PS-INFO-0036' );
 INSERT INTO OBSERVACION VALUES (nextval('OBS_ID'), 'Buenas tardes, Sr.....El archivo de informe está dañado',                  'ABIERTO',   to_date('17-05-2021','dd-mm-yyyy'),null, 'B&PS-INFO-0038' );
+insert into COMENTARIO (ORDEN, FECHA, CONTENIDO, USERNAME, ID_OBSERVACION) values (1, '19/03/2021', 'bibendum imperdiet nullam orci pede venenatis non sodales sed tincidunt eu felis fusce posuere felis sed lacus morbi sem', 'jcicchelli5', 1);
+insert into COMENTARIO (ORDEN, FECHA, CONTENIDO, USERNAME, ID_OBSERVACION) values (2, '20/03/2021', 'sed augue aliquam erat volutpat in congue etiam justo etiam pretium iaculis justo', 'epaddonf', 1);
+insert into COMENTARIO (ORDEN, FECHA, CONTENIDO, USERNAME, ID_OBSERVACION) values (3, '21/03/2021', 'nunc purus phasellus in felis donec semper sapien a libero nam dui proin leo odio porttitor id consequat in consequat', 'jcicchelli5', 1);
+insert into COMENTARIO (ORDEN, FECHA, CONTENIDO, USERNAME, ID_OBSERVACION) values (1, '29/04/2021', 'nulla facilisi cras non velit nec nisi vulputate nonummy maecenas tincidunt lacus', 'jcicchelli5', 2);
+insert into COMENTARIO (ORDEN, FECHA, CONTENIDO, USERNAME, ID_OBSERVACION) values (1, '28/02/2021', 'consequat nulla nisl nunc nisl duis bibendum felis sed interdum venenatis', 'jcicchelli5', 3);
+insert into COMENTARIO (ORDEN, FECHA, CONTENIDO, USERNAME, ID_OBSERVACION) values (2, '01/03/2021', 'quam sapien varius ut blandit non interdum in ante vestibulum ante ipsum primis in faucibus orci luctus et', 'qpeardeg', 3);
+insert into COMENTARIO (ORDEN, FECHA, CONTENIDO, USERNAME, ID_OBSERVACION) values (1, '28/04/2021', 'sed tincidunt eu felis fusce posuere felis sed lacus morbi sem mauris laoreet ut rhoncus aliquet', 'mohrt6', 6);
+insert into COMENTARIO (ORDEN, FECHA, CONTENIDO, USERNAME, ID_OBSERVACION) values (2, '29/04/2021', 'adipiscing elit proin risus praesent lectus vestibulum quam sapien varius ut blandit non interdum in ante vestibulum ante ipsum', 'izoldh', 6);
+insert into COMENTARIO (ORDEN, FECHA, CONTENIDO, USERNAME, ID_OBSERVACION) values (3, '30/04/2021', 'ac neque duis bibendum morbi non quam nec dui luctus rutrum nulla tellus', 'mohrt6', 6);
+insert into COMENTARIO (ORDEN, FECHA, CONTENIDO, USERNAME, ID_OBSERVACION) values (1, '12/03/2021', 'dictumst aliquam augue quam sollicitudin vitae consectetuer eget rutrum at', 'dmeasor7', 7);
+insert into COMENTARIO (ORDEN, FECHA, CONTENIDO, USERNAME, ID_OBSERVACION) values (1, '21/05/2021', 'diam cras pellentesque volutpat dui maecenas tristique est et tempus semper est quam pharetra magna ac consequat metus sapien', 'dmcgeachey8', 9);
+insert into COMENTARIO (ORDEN, FECHA, CONTENIDO, USERNAME, ID_OBSERVACION) values (2, '22/05/2021', 'vulputate elementum nullam varius nulla facilisi cras non velit nec nisi vulputate nonummy maecenas tincidunt lacus', 'ahupek', 9);
+insert into COMENTARIO (ORDEN, FECHA, CONTENIDO, USERNAME, ID_OBSERVACION) values (1, '19/01/2021', 'curabitur in libero ut massa volutpat convallis morbi odio odio elementum eu interdum eu tincidunt in leo maecenas', 'tgoingb', 11);
+insert into COMENTARIO (ORDEN, FECHA, CONTENIDO, USERNAME, ID_OBSERVACION) values (2, '19/01/2021', 'morbi porttitor lorem id ligula suspendisse ornare consequat lectus in est risus auctor sed tristique in', 'atearlen', 11);
+insert into COMENTARIO (ORDEN, FECHA, CONTENIDO, USERNAME, ID_OBSERVACION) values (3, '20/01/2021', 'mauris laoreet ut rhoncus aliquet pulvinar sed nisl nunc rhoncus dui vel sem', 'tgoingb', 11);
+insert into COMENTARIO (ORDEN, FECHA, CONTENIDO, USERNAME, ID_OBSERVACION) values (1, '29/04/2021', 'natoque penatibus et magnis dis parturient montes nascetur ridiculus mus etiam vel augue vestibulum rutrum rutrum neque aenean auctor', 'tgoingb', 12);
+insert into COMENTARIO (ORDEN, FECHA, CONTENIDO, USERNAME, ID_OBSERVACION) values (1, '18/05/2021', 'elit proin interdum mauris non ligula pellentesque ultrices phasellus id sapien in sapien', 'ljeansd', 15);
+insert into COMENTARIO (ORDEN, FECHA, CONTENIDO, USERNAME, ID_OBSERVACION) values (2, '19/05/2021', 'congue etiam justo etiam pretium iaculis justo in hac habitasse', 'jrawsthorner', 15);
