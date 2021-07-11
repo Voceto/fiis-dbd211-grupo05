@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Actividades</title>
+</head>
+<body>
+    <div id="actividades">
+        <template v-if="listaBand">
+            <div align="center">|
+                <h2>ACTIVIDADES DEL PROY {{idProyecto}}</h2>
+                <table border="1px">
+                    <tr>
+                        <th>CODIGO</th>
+                        <th>NOMBRE</th>
+                        <th>FEHCA_INICIO</th>
+                        <th>ESTADO</th>
+                        <th>NRO_OBS</th>
+                    </tr>
+                    <template v-for="a in actividades">
+                        <tr>
+                            <td>{{a.codigo +':'+a.codigo_tipo}}</td>
+                            <td>
+                                <div @click="verActividad(a.codigo,a.codigo_tipo)">
+                                    {{a.nombre}}
+                                </div>
+                            </td>
+                            <td>{{a.fecha_inicio_real}}</td>
+                            <td>{{a.estado}}</td>
+                            <td>{{a.nro_obs}}</td>
+                        </tr>
+                    </template>
+                </table>
+            </div>
+        </template>
+        <template v-if="actividadBand">
+            <h1>
+                REPORTE DE ACTIVIDAD
+            </h1>
+            <table>
+                <tr>
+                    <td>CODIGO DE ACTIVIDAD:</td>
+                    <td>{{actividad.codigo+':'+actividad.codigo_tipo}}</td>
+                </tr>
+                <tr>
+                    <td>FECHA DE INICIO PROGRAMADA:</td>
+                    <td>{{actividad.fecha_inic_prog}}</td>
+                </tr>
+                <tr>
+                    <td>FECHA DE FIN PROGRAMADA:</td>
+                    <td>{{actividad.fecha_fin_prog}}</td>
+                </tr>
+                <tr><td>
+                    <button @click="volverLista">Volver a la lista de actividades</button>
+                </td></tr>
+            </table>
+        </template>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="js/script_actividades.js"></script>
+</body>
+</html>

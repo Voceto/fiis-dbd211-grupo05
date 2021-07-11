@@ -2,13 +2,15 @@ package edu.uni.dbd.pc04.bean;
 
 public class ActividadLResponse {
     String codigo;
+    String codigo_tipo;
     String nombre;
     String fecha_inicio_real;
     String estado;
     int nro_obs;
 
-    public ActividadLResponse(String codigo, String nombre, String fecha_inicio_real, String estado, int nro_obs) {
+    public ActividadLResponse(String codigo, String codigo_tipo, String nombre, String fecha_inicio_real, String estado, int nro_obs) {
         this.codigo = codigo;
+        this.codigo_tipo = codigo_tipo;
         this.nombre = nombre;
         this.fecha_inicio_real = fecha_inicio_real;
         this.estado = estado;
@@ -24,6 +26,15 @@ public class ActividadLResponse {
     public String getNombre() {
         return nombre;
     }
+
+    public String getCodigo_tipo() {
+        return codigo_tipo;
+    }
+
+    public void setCodigo_tipo(String codigo_tipo) {
+        this.codigo_tipo = codigo_tipo;
+    }
+
     public void setNombre(String nombre) {
         this.nombre = nombre;
     }
