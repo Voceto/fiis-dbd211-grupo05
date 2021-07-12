@@ -25,12 +25,12 @@ public class ObservacionLController {
     public ArrayList<ObservacionLResponse> getObservaciones(@RequestBody IdRequest p) throws Exception{
         ArrayList<ObservacionLResponse> obs =new ArrayList<>();
         Connection conn = template.getDataSource().getConnection();
-        String sql= "SELECT ||'OBS-'|| LPAD(CAST(O.ID AS VARCHAR), 10, '0') ,  DATE( O.FECHA_CREAC ), EXTRACT(HOUR FROM O.FECHA_CREAC), O.ESTADO FROM OBSERVACION O JOIN INFORME I ON O.CODIGO_INF = I.CODIGO WHERE I.CODIGO = ?";
+        String sql= "SELECT CAST(O.ID AS VARCHAR),  TO_CHAR( O.FECHA_CREAC,'DD-MM-YYYY' ), TO_CHAR(O.FECHA_CREAC,'HH:MM'), O.ESTADO FROM OBSERVACION O JOIN INFORME I ON O.CODIGO_INF = I.CODIGO WHERE I.CODIGO = ?";
         PreparedStatement pst = conn.prepareStatement(sql);
         pst.setString(1,p.getId());
         ResultSet rs = pst.executeQuery();
         while(rs.next()){
-            obs.add(new ObservacionLResponse(rs.getString(1),rs.getString(2),rs.getString(3),rs.getString(4)));
+            obs.add(new ObservacionLResponse(rs.getString(1),rs.getString(3),rs.getString(2),rs.getString(4)));
         }
         rs.close();
         pst.close();
@@ -38,23 +38,21 @@ public class ObservacionLController {
         return obs;
     }
 
-    @PostMapping("/obtenetObservacion")
-    public ObservacionResponse getObservacion(@RequestBody ObservacionRequest a) throws Exception{
+    @PostMapping("/obtenerObservacion")
+    public ObservacionResponse getObservacion(@RequestBody IdRequest a) throws Exception{
         Connection conn = template.getDataSource().getConnection();
-        String sql= "SELECT ||'OBS-'|| LPAD(CAST(O.ID AS VARCHAR), 10, '0') ,  DATE(O.FECHA_CREAC), " +
-                "EXTRACT( HOUR FROM O.FECHA_CREAC ), " +
-                "COALESCE(CAST(DATE(O.FECHA_LEV) AS VARCHAR),''), " +
-                "COALESCE(CAST(EXTRACT(HOUR FROM O.FECHA_LEV) AS VARCHAR),''), O.ESTADO, O.CONTENIDO " +
+        String sql= "SELECT CAST(O.ID AS VARCHAR),TO_CHAR(O.FECHA_CREAC,'DD/MM/YYYY'), " +
+                "TO_CHAR(O.FECHA_CREAC,'HH:MM' ), " +
+                "COALESCE(TO_CHAR(O.FECHA_LEV,'DD/MM/YYYY'),'-'), " +
+                "COALESCE(TO_CHAR(O.FECHA_LEV,'DD/MM/YYYY'),'-'), O.ESTADO, O.CONTENIDO " +
                 "FROM OBSERVACION O " +
                 "JOIN INFORME I ON O.CODIGO_INF = I.CODIGO " +
-                "WHERE I.CODIGO = ? AND O.ID = ?";
+                "WHERE O.ID = ?";
         PreparedStatement pst = conn.prepareStatement(sql);
-        pst.setString(1, a.getCodigo_inf());
-        pst.setInt(2,a.getId());
-
+        pst.setInt(1, Integer.parseInt(a.getId()));
         ResultSet rs = pst.executeQuery();
         rs.next();
-        ObservacionResponse obs = new ObservacionResponse(rs.getString(1),rs.getString(2),rs.getString(3),rs.getString(4),rs.getString(5),rs.getString(6));
+        ObservacionResponse obs = new ObservacionResponse(rs.getString(1),rs.getString(3),rs.getString(5),rs.getString(2),rs.getString(4),rs.getString(6));
         rs.close();
         pst.close();
         conn.close();
