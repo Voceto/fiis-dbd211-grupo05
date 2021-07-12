@@ -1,12 +1,12 @@
 package edu.uni.dbd.pc04.bean;
 
 public class ActividadLResponse {
-    String codigo;
-    String codigo_tipo;
-    String nombre;
-    String fecha_inicio_real;
-    String estado;
-    int nro_obs;
+    private String codigo;
+    private String codigo_tipo;
+    private String nombre;
+    private String fecha_inicio_real;
+    private String estado;
+    private int nro_obs;
 
     public ActividadLResponse(String codigo, String codigo_tipo, String nombre, String fecha_inicio_real, String estado, int nro_obs) {
         this.codigo = codigo;

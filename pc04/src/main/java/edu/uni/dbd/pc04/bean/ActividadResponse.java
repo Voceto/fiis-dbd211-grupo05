@@ -1,18 +1,18 @@
 package edu.uni.dbd.pc04.bean;
 
 public class ActividadResponse {
-    String codigo;
-    String fecha_inic_prog;
-    String fecha_fin_prog;
-    String estado;
-    String codigo_tipo;
-    String descripcion;
-    String nombre;
-    String frec_ins;
-    String doc_ref;
-    String tip_ver;
-    String tipo_ins;
-    String pto_ins;
+    private String codigo;
+    private String fecha_inic_prog;
+    private String fecha_fin_prog;
+    private String estado;
+    private String codigo_tipo;
+    private String descripcion;
+    private String nombre;
+    private String frec_ins;
+    private String doc_ref;
+    private String tip_ver;
+    private String tipo_ins;
+    private String pto_ins;
 
     public ActividadResponse(String codigo, String fecha_inic_prog, String fecha_fin_prog, String estado, String codigo_tipo, String descripcion, String nombre, String frec_ins, String doc_ref, String tip_ver, String tipo_ins, String pto_ins) {
         this.codigo = codigo;
