@@ -1,4 +1,3 @@
-localStorage.setItem("usuario","erzehorj")
 const app = new Vue({
     el:'#proyectos',
     data:{
@@ -15,16 +14,16 @@ const app = new Vue({
             this.ultProyBand=true;
             this.listaBand=false;
             this.proyBand=false;
-            axios.post('/obtenerUltimoProyecto',{id:this.username}).then(response => (this.ultProyBand=response.data))
+            axios.post('/obtenerUltimoProyecto',{id:this.username}).then(response => (this.proyUlt=response.data))
         },
         verLista:function(){
-            this.actividadBand=false;
+            this.ultProyBand=false;
             this.listaBand=true;
             this.proyBand=false;
             axios.post('/listaProyectos',{id:this.username}).then(response=>(this.proyectos=response.data))
         },
         verProyecto:function(cod){
-            this.actividadBand=false;
+            this.ultProyBand=false;
             this.listaBand=false;
             this.proyBand=true;
             axios.post('/obtenerProyecto',{id:cod}).then(response=>(this.proyecto=response.data));
@@ -33,6 +32,6 @@ const app = new Vue({
 
     },
     mounted () {
-            this.verLista();
+            this.verUltimoProy();
     },
 })

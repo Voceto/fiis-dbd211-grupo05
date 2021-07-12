@@ -47,7 +47,7 @@ public class InformeLController {
 
         ResultSet rs = pst.executeQuery();
         rs.next();
-        InformeResponse inf = new InformeResponse(rs.getString(1),rs.getString(2),rs.getString(3),rs.getString(4));
+        InformeResponse inf = new InformeResponse(rs.getString(1),rs.getString(3),rs.getString(2),rs.getString(4));
         rs.close();
         pst.close();
         conn.close();

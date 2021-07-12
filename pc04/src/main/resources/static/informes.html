@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Informes</title>
+    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+    <link
+      href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.min.css"
+      rel="stylesheet"
+      id="bootstrap-css"
+    />
+    <script src="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/js/bootstrap.min.js"></script>
+
+    <link rel="stylesheet" href="css/Proyecto-I2.css" />
+    <link rel="stylesheet" href="css/Proyecto-I6.css" />
+    <link rel="stylesheet" href="css/Proyecto-I3.css" />
+  </head>
+  <body>
+    <div id="informes">
+      <header>
+        <div class="menu">
+          <img src="images/logo.png" alt="" />
+          <nav>
+            <ul>
+              <li><a href="#">Inicio</a></li>
+              <li><a href="#">Mis Proyectos</a></li>
+              <li><a href="#">Logout</a></li>
+              <img src="images/imagen.png" alt="" />
+            </ul>
+          </nav>
+        </div>
+      </header>
+
+      <template v-if="listaBand">
+        <h2>Informes</h2>
+
+        <div class="mb-3">
+          <label for="exampleInputEmail1" class="form-label"
+            >Fecha desde:
+          </label>
+          <input type="date" class="form-control" id="Fecha desde" />
+        </div>
+        <div class="mb-3">
+          <label for="exampleInputPassword1" class="form-label"
+            >Fecha hasta:
+          </label>
+          <input type="date" class="form-control" id="Fecha hasta" />
+        </div>
+
+        <div class="control-group">
+          <!-- Button -->
+          <div class="controls">
+            <button class="btn btn-success">Filtrar</button>
+            <span class="input-group-text"></span>
+          </div>
+        </div>
+        <div class="table-wrapper-scroll-y my-custom-scrollbar">
+          <table class="table table-bordered table-striped mb-0">
+            <thead>
+              <tr>
+                <th scope="col">Código</th>
+                <th scope="col">Nombre</th>
+                <th scope="col">Fecha</th>
+              </tr>
+            </thead>
+            <tbody>
+              <template v-for="i in informes">
+                <tr>
+                  <td>{{i.codigo}}</td>
+                  <td>
+                    <div @click="verInforme(i.codigo)">{{i.nombre}}</div>
+                  </td>
+                  <td>{{i.fecha}}</td>
+                </tr>
+              </template>
+            </tbody>
+          </table>
+        </div>
+        <div class="control-group">
+          <div class="controls">
+            <a href="/actividades.html">
+              <button class="btn btn-success">Volver a actividades</button>
+            </a>
+          </div>
+        </div>
+      </template>
+      <template v-if="informeBand">
+        <h2>Datos de informe</h2>
+
+        <div class="table-wrapper-scroll-y my-custom-scrollbar">
+          <table class="table table-bordered table-striped mb-0">
+            <thead>
+              <tr>
+                <th scope="col">Nombre</th>
+                <td>{{informe.nombre}}</td>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row">Código</th>
+                <td>{{informe.codigo}}</td>
+              </tr>
+              <tr>
+                <th scope="row">Fecha</th>
+                <td>{{informe.fecha}}</td>
+              </tr>
+              <tr>
+                <th scope="row">Ver PDF</th>
+                <td>
+                  <a :href="informe.codigo"> Haga click aquí </a>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+
+          <div class="control-group">
+            <div class="controls">
+              <a href="/listObs.html">
+                <button class="btn btn-success">
+                  Ver observaciones de este informe
+                </button>
+              </a>
+            </div>
+          </div>
+          <div class="control-group">
+            <div class="controls">
+              <a href="/actividades.html">
+                <button class="btn btn-success">
+                  Hacer una observación a este informe
+                </button>
+              </a>
+            </div>
+          </div>
+          <div class="control-group">
+            <div class="controls">
+              <button @click="verLista" class="btn btn-success">
+                Volver a lista de informes
+              </button>
+            </div>
+          </div>
+        </div>
+      </template>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="js/script_informes.js"></script>
+  </body>
+</html>

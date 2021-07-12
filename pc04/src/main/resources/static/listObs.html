@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Observaciones</title>
+    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+    <link
+      href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.min.css"
+      rel="stylesheet"
+      id="bootstrap-css"
+    />
+    <script src="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/js/bootstrap.min.js"></script>
+
+    <link rel="stylesheet" href="css/Proyecto-I2.css" />
+    <link rel="stylesheet" href="css/Proyecto-I6.css" />
+    <link rel="stylesheet" href="css/Proyecto-I3.css" />
+  </head>
+  <body>
+    <div id="obs">
+      <header>
+        <div class="menu">
+          <img src="images/logo.png" alt="" />
+          <nav>
+            <ul>
+              <li><a href="#">Inicio</a></li>
+              <li><a href="#">Mis Proyectos</a></li>
+              <li><a href="#">Logout</a></li>
+              <img src="images/imagen.png" alt="" />
+            </ul>
+          </nav>
+        </div>
+      </header>
+      <h2>Observaciones</h2>
+
+        <div class="mb-3">
+          <label for="exampleInputEmail1" class="form-label"
+            >Fecha desde:
+          </label>
+          <input type="date" class="form-control" id="Fecha desde" />
+        </div>
+        <div class="mb-3">
+          <label for="exampleInputPassword1" class="form-label"
+            >Fecha hasta:
+          </label>
+          <input type="date" class="form-control" id="Fecha hasta" />
+        </div>
+
+        <div class="control-group">
+          <!-- Button -->
+          <div class="controls">
+            <button class="btn btn-success">Filtrar</button>
+            <span class="input-group-text"></span>
+          </div>
+        </div>
+        <div class="table-wrapper-scroll-y my-custom-scrollbar">
+          <table class="table table-bordered table-striped mb-0">
+            <thead>
+              <tr>
+                <th scope="col">Código</th>
+                <th scope="col">Hora de creación</th>
+                <th scope="col">Fecha de creación</th>
+                <th scope="col">Estado</th>
+              </tr>
+            </thead>
+            <tbody>
+              <template v-for="o in observaciones">
+                <tr>
+                  <td><div @click="verObs">
+                      <a href="/22.html">{{o.codigo}}</a>
+                    </div></td>
+                  <td>
+                    <div @click="verObs">
+                        {{o.hora_creacion}}</div>
+                  </td>
+                  <td>{{o.fecha_creacion}}</td>
+                  <td>{{o.fecha_estado}}</td>
+                </tr>
+              </template>
+            </tbody>
+          </table>
+        </div>
+        <div class="control-group">
+          <div class="controls">
+            <a href="/informes.html">
+              <button class="btn btn-success">Volver a informes</button>
+            </a>
+          </div>
+        </div>
+        
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="js/script_listObs.js"></script>
+  </body>
+</html>

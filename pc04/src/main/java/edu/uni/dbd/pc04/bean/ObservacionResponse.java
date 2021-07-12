@@ -7,14 +7,24 @@ public class ObservacionResponse {
     private String fecha_creacion;
     private String fecha_levatamiento;
     private String estado;
+    private String contenido;
 
-    public ObservacionResponse(String id, String hora_creacion, String hora_levantamiento, String fecha_creacion, String fecha_levatamiento, String estado) {
+    public ObservacionResponse(String id, String hora_creacion, String hora_levantamiento, String fecha_creacion, String fecha_levatamiento, String estado, String contenido) {
         this.id = id;
         this.hora_creacion = hora_creacion;
         this.hora_levantamiento = hora_levantamiento;
         this.fecha_creacion = fecha_creacion;
         this.fecha_levatamiento = fecha_levatamiento;
         this.estado = estado;
+        this.contenido = contenido;
+    }
+
+    public String getContenido() {
+        return contenido;
+    }
+
+    public void setContenido(String contenido) {
+        this.contenido = contenido;
     }
 
     public String getId() {

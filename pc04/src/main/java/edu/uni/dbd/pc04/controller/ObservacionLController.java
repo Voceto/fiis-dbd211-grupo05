@@ -42,9 +42,9 @@ public class ObservacionLController {
     public ObservacionResponse getObservacion(@RequestBody IdRequest a) throws Exception{
         Connection conn = template.getDataSource().getConnection();
         String sql= "SELECT CAST(O.ID AS VARCHAR),TO_CHAR(O.FECHA_CREAC,'DD/MM/YYYY'), " +
-                "TO_CHAR(O.FECHA_CREAC,'HH:MM' ), " +
+                "TO_CHAR(O.FECHA_CREAC,'HH:MI' ), " +
                 "COALESCE(TO_CHAR(O.FECHA_LEV,'DD/MM/YYYY'),'-'), " +
-                "COALESCE(TO_CHAR(O.FECHA_LEV,'DD/MM/YYYY'),'-'), O.ESTADO, O.CONTENIDO " +
+                "COALESCE(TO_CHAR(O.FECHA_LEV,'HH:MI'),'-'), O.ESTADO, O.CONTENIDO " +
                 "FROM OBSERVACION O " +
                 "JOIN INFORME I ON O.CODIGO_INF = I.CODIGO " +
                 "WHERE O.ID = ?";
@@ -52,11 +52,24 @@ public class ObservacionLController {
         pst.setInt(1, Integer.parseInt(a.getId()));
         ResultSet rs = pst.executeQuery();
         rs.next();
-        ObservacionResponse obs = new ObservacionResponse(rs.getString(1),rs.getString(3),rs.getString(5),rs.getString(2),rs.getString(4),rs.getString(6));
+        ObservacionResponse obs = new ObservacionResponse(rs.getString(1),rs.getString(3),rs.getString(5),rs.getString(2),rs.getString(4),rs.getString(6),rs.getString(7));
         rs.close();
         pst.close();
         conn.close();
         return obs;
+    }
+    @PostMapping("/marcarResuelta")
+    public String resolverObservacion(@RequestBody IdRequest a) throws Exception{
+        Connection conn = template.getDataSource().getConnection();
+        String sql= "UPDATE OBSERVACION " +
+                "SET ESTADO = 'FINALIZADO', FECHA_LEV=NOW() " +
+                "WHERE ID = ?";
+        PreparedStatement pst = conn.prepareStatement(sql);
+        pst.setInt(1, Integer.parseInt(a.getId()));
+        pst.executeUpdate();
+        pst.close();
+        conn.close();
+        return "true";
     }
 
 

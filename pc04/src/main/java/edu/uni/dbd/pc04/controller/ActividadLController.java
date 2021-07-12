@@ -22,7 +22,7 @@ public class ActividadLController {
     public ArrayList<ActividadLResponse> getActividades(@RequestBody IdRequest p)throws Exception{
         ArrayList<ActividadLResponse> a =new ArrayList<>();
         Connection conn = template.getDataSource().getConnection();
-        String sql= "SELECT A.CODIGO,A.CODIGO_TIPO, T.NOMBRE , TO_CHAR(A.FECHA_INICIO_REAL,'DD/MM/YYYY'), A.ESTADO," +
+        String sql= "SELECT A.CODIGO,A.CODIGO_TIPO, T.NOMBRE , COALESCE(TO_CHAR(A.FECHA_INICIO_REAL,'DD/MM/YYYY'),'NO INICIADO'), A.ESTADO," +
                 "(SELECT COUNT(*) FROM OBSERVACION O,INFORME I WHERE  O.ESTADO <> 'FINALIZADO' AND I.CODIGO = O.CODIGO_INF AND I.CODIGO_ACT = A.CODIGO AND I.CODIGO_TIPO_ACT=A.CODIGO_TIPO)" +
                 "FROM ACTIVIDAD A, TIPOACTIVIDAD T " +
                 "WHERE A.CODIGO_TIPO = T.CODIGO " +
