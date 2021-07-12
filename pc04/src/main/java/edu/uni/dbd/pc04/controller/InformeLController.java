@@ -24,7 +24,7 @@ public class InformeLController {
     public ArrayList<InformeLResponse> getInformes(@RequestBody IdRequest p)throws Exception{
         ArrayList<InformeLResponse> inf =new ArrayList<>();
         Connection conn = template.getDataSource().getConnection();
-        String sql= "SELECT CODIGO, NOMBRE, FECHA FROM INFORME WHERE CODIGO_ACT = ?";
+        String sql= "SELECT CODIGO, NOMBRE, TO_CHAR(FECHA,'DD/MM/YYYY') FROM INFORME WHERE CODIGO_ACT = ?";
         PreparedStatement pst = conn.prepareStatement(sql);
         pst.setString(1,p.getId());
         ResultSet rs = pst.executeQuery();
@@ -37,11 +37,11 @@ public class InformeLController {
         return inf;
     }
     @PostMapping("/obtenerInforme")
-    public InformeResponse getInforme(@RequestBody InformeResponse a)throws Exception{
+    public InformeResponse getInforme(@RequestBody IdRequest p)throws Exception{
         Connection conn = template.getDataSource().getConnection();
-        String sql= "SELECT I.CODIGO, I.FECHA , I.NOMBRE,I.URL_PDF FROM INFORME I WHERE I.CODIGO= ?";
+        String sql= "SELECT I.CODIGO, TO_CHAR(I.FECHA,'DD/MM/YYYY') , I.NOMBRE,I.URL_PDF FROM INFORME I WHERE I.CODIGO= ?";
         PreparedStatement pst = conn.prepareStatement(sql);
-        pst.setString(1, a.getCodigo());
+        pst.setString(1, p.getId());
 
         ResultSet rs = pst.executeQuery();
         rs.next();
