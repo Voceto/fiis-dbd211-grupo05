@@ -23,7 +23,7 @@ public class ComentarioController {
     public ArrayList<ComentarioResponse> getComentario(@RequestBody IdRequest a) throws Exception{
         ArrayList<ComentarioResponse> com =new ArrayList<>();
         Connection conn = template.getDataSource().getConnection();
-        String sql= "SELECT C.CONTENIDO,CAST(C.ORDEN AS VARCHAR),TO_CHAR(C.FECHA,'DD/MM/YYYY'),TO_CHAR(C.FECHA,'HH:MM') " +
+        String sql= "SELECT C.CONTENIDO,CAST(C.ORDEN AS VARCHAR),TO_CHAR(C.FECHA,'DD/MM/YYYY'),TO_CHAR(C.FECHA,'HH24:MI') " +
                 "FROM COMENTARIO C " +
                 "JOIN OBSERVACION O ON O.ID = C.ID_OBSERVACION " +
                 "JOIN INFORME I ON O.CODIGO_INF = I.CODIGO " +

@@ -67,15 +67,15 @@
             <tbody>
               <template v-for="o in observaciones">
                 <tr>
-                  <td><div @click="verObs">
-                      <a href="/22.html">{{o.codigo}}</a>
+                  <td><div @click="verObs(o.id)">
+                      <a href="/22.html">{{'OBS'+o.id}}</a>
                     </div></td>
                   <td>
-                    <div @click="verObs">
+                    <div @click="verObs(o.id)">
                         {{o.hora_creacion}}</div>
                   </td>
                   <td>{{o.fecha_creacion}}</td>
-                  <td>{{o.fecha_estado}}</td>
+                  <td>{{o.estado}}</td>
                 </tr>
               </template>
             </tbody>
