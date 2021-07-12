@@ -4,6 +4,7 @@ import edu.uni.dbd.pc04.bean.ActividadLResponse;
 import edu.uni.dbd.pc04.bean.ActividadResponse;
 import edu.uni.dbd.pc04.bean.InformeLResponse;
 import edu.uni.dbd.pc04.bean.InformeResponse;
+import edu.uni.dbd.pc04.request.ActividadRequest;
 import edu.uni.dbd.pc04.request.IdRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -21,12 +22,13 @@ public class InformeLController {
     @Autowired
     JdbcTemplate template;
     @PostMapping("/listainforme")
-    public ArrayList<InformeLResponse> getInformes(@RequestBody IdRequest p)throws Exception{
+    public ArrayList<InformeLResponse> getInformes(@RequestBody ActividadRequest p)throws Exception{
         ArrayList<InformeLResponse> inf =new ArrayList<>();
         Connection conn = template.getDataSource().getConnection();
-        String sql= "SELECT CODIGO, NOMBRE, TO_CHAR(FECHA,'DD/MM/YYYY') FROM INFORME WHERE CODIGO_ACT = ?";
+        String sql= "SELECT CODIGO, NOMBRE, TO_CHAR(FECHA,'DD/MM/YYYY') FROM INFORME WHERE CODIGO_ACT = ? AND CODIGO_TIPO_ACT=?";
         PreparedStatement pst = conn.prepareStatement(sql);
-        pst.setString(1,p.getId());
+        pst.setString(1,p.getCodigo());
+        pst.setString(2,p.getCodigo_tipo());
         ResultSet rs = pst.executeQuery();
         while(rs.next()){
             inf.add(new InformeLResponse(rs.getString(1),rs.getString(2),rs.getString(3)));
