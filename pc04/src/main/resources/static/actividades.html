@@ -9,28 +9,34 @@
         <template v-if="listaBand">
             <div align="center">
                 <h2>ACTIVIDADES DEL PROY {{idProyecto}}</h2>
-                <table border="1px">
-                    <tr>
-                        <th>CODIGO</th>
-                        <th>NOMBRE</th>
-                        <th>FEHCA_INICIO</th>
-                        <th>ESTADO</th>
-                        <th>NRO_OBS</th>
-                    </tr>
-                    <template v-for="a in actividades">
+                <template v-if="actividades.length === 0">
+                    No se han registrado actividades en este proyecto
+                </template>
+                <template v-if="!(actividades.length === 0)">
+                    <table border="1px">
                         <tr>
-                            <td>{{a.codigo +':'+a.codigo_tipo}}</td>
-                            <td>
-                                <div @click="verActividad(a.codigo,a.codigo_tipo)">
-                                    {{a.nombre}}
-                                </div>
-                            </td>
-                            <td>{{a.fecha_inicio_real}}</td>
-                            <td>{{a.estado}}</td>
-                            <td>{{a.nro_obs}}</td>
+                            <th>CODIGO</th>
+                            <th>NOMBRE</th>
+                            <th>FECHA_INICIO</th>
+                            <th>ESTADO</th>
+                            <th>NRO_OBS</th>
                         </tr>
-                    </template>
-                </table>
+                        <template v-for="a in actividades">
+                            <tr>
+                                <td>{{a.codigo +':'+a.codigo_tipo}}</td>
+                                <td>
+                                    <div @click="verActividad(a.codigo,a.codigo_tipo)">
+                                        {{a.nombre}}
+                                    </div>
+                                </td>
+                                <td>{{a.fecha_inicio_real}}</td>
+                                <td>{{a.estado}}</td>
+                                <td>{{a.nro_obs}}</td>
+                            </tr>
+                        </template>
+                    </table>
+                </template>
+                
             </div>
         </template>
         <template v-if="actividadBand">

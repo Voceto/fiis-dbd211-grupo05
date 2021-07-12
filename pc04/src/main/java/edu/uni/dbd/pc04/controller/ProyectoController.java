@@ -26,21 +26,24 @@ public class ProyectoController {
                 "P.FECHA_ENTREGA_PROGRAM," +
                 "COALESCE(TO_CHAR(P.FECHA_ENTREGA_REAL,'DD/MM/YYYY'),'Proyecto " +
                 "por terminar') " +
-                "FROM PROYECTO P " +
-                "JOIN STAFF_PROYECTO S ON S.CODIGO_PROY = P.CODIGO " +
-                "JOIN EMPLEADO E ON E.DNI = S.DNI_EMPLEADO " +
-                "WHERE P.FECHA_INICIO_REAL = (SELECT MAX(FECHA_INICIO_REAL) " +
+                "FROM PROYECTO P," +
+                "STAFF_PROYECTO S,EMPLEADO E,USUARIO U,REPEMPRESA R  " +
+                "WHERE S.CODIGO_PROY = P.CODIGO AND E.DNI = S.DNI_EMPLEADO AND " +
+                "P.FECHA_INICIO_REAL = (SELECT MAX(FECHA_INICIO_REAL) " +
                 "FROM PROYECTO " +
                 "WHERE DNI_REPCLIENTE = P.dni_repcliente) " +
-                "AND S.ROL_PROY = 'Jefe' AND P.dni_repcliente=?";
+                "AND S.ROL_PROY = 'Jefe' AND P.dni_repcliente=R.DNI AND R.USERNAME=?";
         PreparedStatement pst = conn.prepareStatement(sql);
         pst.setString(1,i.getId());
         ResultSet rs = pst.executeQuery();
         ProyectoUltResponse proy;
-        rs.next();
-        proy = new ProyectoUltResponse(rs.getString(1),rs.getString(2),rs.getString(3),
-                rs.getString(4),rs.getString(5),rs.getString(6),
-                rs.getString(7));
+        if(rs.next()){
+            proy = new ProyectoUltResponse(rs.getString(1),rs.getString(2),rs.getString(3),
+                    rs.getString(4),rs.getString(5),rs.getString(6),
+                    rs.getString(7));
+        }else{
+            proy = null;
+        }
         rs.close();
         pst.close();
         conn.close();

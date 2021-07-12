@@ -1,5 +1,4 @@
 
-
  const app = new Vue({
     el:'#actividades',
     data:{
