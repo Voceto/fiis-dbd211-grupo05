@@ -7,7 +7,8 @@ const app = new Vue({
         proyBand:false,
         proyectos:[],
         proyUlt:{},
-        proyecto:{}
+        proyecto:{},
+        fecha_text:""
     },
     methods:{
         verUltimoProy:function(){
@@ -28,8 +29,10 @@ const app = new Vue({
             this.proyBand=true;
             axios.post('/obtenerProyecto',{id:cod}).then(response=>(this.proyecto=response.data));
             localStorage.setItem("cod_proy",cod)
-        }
-
+        },
+        filtrarProyecto:function(){
+            axios.post('/filtroProyectos',{id:this.username,fmin:document.getElementById("Fecha desde").value,fmax:document.getElementById("Fecha hasta").value}).then(response=>(this.proyectos=response.data));
+        },
     },
     mounted () {
             this.verUltimoProy();
