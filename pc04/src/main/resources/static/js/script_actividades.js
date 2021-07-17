@@ -19,7 +19,10 @@ const app = new Vue({
             axios.post('/obtenerActividad',{codigo:p1,codigo_tipo:p2}).then(response => (this.actividad=response.data));
             localStorage.setItem("cod_act",p1);
             localStorage.setItem("cod_tipo_act",p2);
-        }
+        },
+        filtrarProyecto:function(){
+            axios.post('/filtrarActividades',{id:this.idProyecto,fmin:document.getElementById("Fecha desde").value,fmax:document.getElementById("Fecha hasta").value}).then(response=>(this.actividades=response.data));
+        },
     },
     mounted () {
         this.verLista();
