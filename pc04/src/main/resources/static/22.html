@@ -88,7 +88,7 @@
           <template v-for="c in comentarios">
             <div class="control-group">
               <label class="control-label" for="Comentario"
-                >Comentario {{' n° '+c.orden+' '+c.fecha+' '+c.hora}} :</label
+                >{{'Comentario n° '+c.orden+': '+c.fecha+' '+c.hora}}<br>{{'Por '+c.username}} </label
               >
               <p>{{c.contenido}}</p>
             </div>

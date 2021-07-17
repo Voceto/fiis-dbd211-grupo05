@@ -23,7 +23,7 @@ public class ComentarioController {
     public ArrayList<ComentarioResponse> getComentario(@RequestBody IdRequest a) throws Exception{
         ArrayList<ComentarioResponse> com =new ArrayList<>();
         Connection conn = template.getDataSource().getConnection();
-        String sql= "SELECT C.CONTENIDO,CAST(C.ORDEN AS VARCHAR),TO_CHAR(C.FECHA,'DD/MM/YYYY'),TO_CHAR(C.FECHA,'HH24:MI') " +
+        String sql= "SELECT C.USERNAME,C.CONTENIDO,CAST(C.ORDEN AS VARCHAR),TO_CHAR(C.FECHA,'DD/MM/YYYY'),TO_CHAR(C.FECHA,'HH24:MI') " +
                 "FROM COMENTARIO C " +
                 "JOIN OBSERVACION O ON O.ID = C.ID_OBSERVACION " +
                 "JOIN INFORME I ON O.CODIGO_INF = I.CODIGO " +
@@ -32,7 +32,7 @@ public class ComentarioController {
         pst.setInt(1,Integer.parseInt(a.getId()));
         ResultSet rs = pst.executeQuery();
         while(rs.next()){
-            com.add(new ComentarioResponse(rs.getString(1),rs.getString(2),rs.getString(3),rs.getString(4)));
+            com.add(new ComentarioResponse(rs.getString(1),rs.getString(2),rs.getString(3),rs.getString(4),rs.getString(5)));
         }
         rs.close();
         pst.close();

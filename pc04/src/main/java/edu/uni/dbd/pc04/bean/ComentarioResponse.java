@@ -1,16 +1,34 @@
 package edu.uni.dbd.pc04.bean;
 
 public class ComentarioResponse {
+    private String username;
     private String contenido;
     private String orden;
     private String fecha;
     private String hora;
 
-    public ComentarioResponse(String contenido, String orden, String fecha, String hora) {
+    public ComentarioResponse(String username, String contenido, String orden, String fecha, String hora) {
+        this.username = username;
         this.contenido = contenido;
         this.orden = orden;
         this.fecha = fecha;
         this.hora = hora;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public String getContenido() {
+        return contenido;
+    }
+
+    public void setContenido(String contenido) {
+        this.contenido = contenido;
     }
 
     public String getOrden() {
@@ -35,17 +53,5 @@ public class ComentarioResponse {
 
     public void setHora(String hora) {
         this.hora = hora;
-    }
-
-    public ComentarioResponse(String contenido) {
-        this.contenido = contenido;
-    }
-
-    public String getContenido() {
-        return contenido;
-    }
-
-    public void setContenido(String contenido) {
-        this.contenido = contenido;
     }
 }

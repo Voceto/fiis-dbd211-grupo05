@@ -22,7 +22,7 @@ const app = new Vue({
         },
         responderComentario:function(){
             axios.post('/responderComentario',{ contenido: this.nuevoComentario,username:this.username,id_observacion:this.cod_obs }).then(response => (this.nuevoComConf= response.data));
-            this.comentarios.push({contenido:this.nuevoComentario,orden:'1',fecha:'Hoy',hora:'Ahora mismo'});
+            this.comentarios.push({username:"Yo",contenido:this.nuevoComentario,orden:'1',fecha:'Hoy',hora:'Ahora mismo'});
             this.nuevoComentario=""
         },
         marcarResuelto:function(){
