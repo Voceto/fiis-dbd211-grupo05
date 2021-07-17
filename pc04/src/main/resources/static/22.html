@@ -1,151 +1,128 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Observacion (22)</title>
-    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
-    <link
-      href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.min.css"
-      rel="stylesheet"
-      id="bootstrap-css"
-    />
-    <script src="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/js/bootstrap.min.js"></script>
-    <link rel="stylesheet" href="css/22.css" />
-  </head>
-  <body>
-    <header>
-      <div class="menu">
-        <img src="images/logo.png" alt="" />
-        <nav>
-          <ul>
-            <li><a href="#">Inicio</a></li>
-            <li><a href="#">Mis Proyectos</a></li>
-            <li><a href="#">Logout</a></li>
-            <img src="images/imagen.png" alt="" />
-          </ul>
-        </nav>
-      </div>
-    </header>
-    <div id="obs">
-      <form class="form-horizontal">
-        <fieldset>
-          <div id="legend">
-            <h3>Observacion</h3>
-          </div>
-          <div class="control-group">
-            <!-- Código de proyecto -->
-            <label class="control-label" for="Código de proyecto"
-              >Código de Observacion:</label
-            >
-            <p class="input-xlarge">{{obs.id}}</p>
-          </div>
 
-          <div class="control-group">
-            <!-- Fecha de creación -->
-            <label class="control-label" for="Fecha de creación"
-              >Fecha de creación:</label
-            >
-            <p>{{obs.fecha_creacion}}</p>
-          </div>
-          <div class="control-group">
-            <!-- Hora de creación-->
-            <label class="control-label" for="Hora de creación"
-              >Hora de creación:</label
-            >
-            <p>{{obs.hora_creacion}}</p>
-          </div>
-          <div class="control-group">
-            <!-- Fecha de levantamiento-->
-            <label class="control-label" for="Fecha de levantamiento"
-              >Fecha de levantamiento:</label
-            >
-            <p>{{obs.fecha_levatamiento}}</p>
-          </div>
-          <div class="control-group">
-            <!-- Hora de levantamiento-->
-            <label class="control-label" for="Hora de levantamiento"
-              >Hora de levantamiento:</label
-            >
-            <p>{{obs.hora_levantamiento}}</p>
-          </div>
-          <div class="control-group">
-            <!-- Estado-->
-            <label class="control-label" for="Estado">Estado:</label>
-            <p>{{obs.estado}}</p>
-          </div>
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Observacion (22)</title>
+  <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+  <link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.min.css" rel="stylesheet"
+    id="bootstrap-css" />
+  <script src="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="css/22.css" />
+</head>
 
-          <div class="control-group">
-            <!-- Observacion-input-->
-            <label class="control-label" for="Observacion"
-              >Contenido de la observacion:</label
-            >
-            <p>{{obs.contenido}}</p>
-          </div>
-
-          <!-- Comentario-input-->
-          <template v-for="c in comentarios">
-            <div class="control-group">
-              <label class="control-label" for="Comentario"
-                >{{'Comentario n° '+c.orden+': '+c.fecha+' '+c.hora}}<br>{{'Por '+c.username}} </label
-              >
-              <p>{{c.contenido}}</p>
-            </div>
-          </template>
-
-          <div class="control-group">
-            <label class="control-label" for="NuevoCom"
-              >Nuevo comentario:</label
-            >
-            <input
-              type="text"
-              id="Comentario"
-              v-model="nuevoComentario"
-              name="Comentario"
-              placeholder=""
-              class="input-xlarge"
-            />
-          </div>
-          <div class="control-group">
-            <!-- Button -->
-            <div class="controls">
-              <button class="btn btn-success" @click="responderComentario">
-                Responder comentario
-              </button>
-              <span class="input-group-text"
-                ><i class="fas fa-file-pdf"></i
-              ></span>
-            </div>
-          </div>
-
-         
-        </fieldset>
-      </form>
-      <div class="control-group">
-        <!-- Button -->
-        <div class="controls">
-          <a href="/listObs.html"
-            ><button class="btn btn-success">
-              Volver a la lista de observaciones
-            </button></a>
+<body>
+  <header>
+    <div class="menu">
+      <img src="images/logo.png" alt="" />
+      <nav>
+        <ul>
+          <li><a href="#">Inicio</a></li>
+          <li><a href="#">Mis Proyectos</a></li>
+          <li><a href="#">Logout</a></li>
+          <img src="images/imagen.png" alt="" />
+        </ul>
+      </nav>
+    </div>
+  </header>
+  <div id="obs">
+    <form class="form-horizontal">
+      <fieldset>
+        <div id="legend">
+          <h3>Observacion</h3>
         </div>
-      </div>
-
-      <div class="control-group">
-        <!-- Button -->
-        <div class="controls">
-          <button class="btn btn-success" @click="marcarResuelto">
-            Marcar como resuelto
-          </button>
-          <span class="input-group-text"
-            ><i class="fas fa-file-pdf"></i
-          ></span>
+        <div class="control-group">
+          <!-- Código de proyecto -->
+          <label class="control-label" for="Código de proyecto">Código de Observacion:</label>
+          <p class="input-xlarge">{{obs.id}}</p>
         </div>
+
+        <div class="control-group">
+          <!-- Fecha de creación -->
+          <label class="control-label" for="Fecha de creación">Fecha de creación:</label>
+          <p>{{obs.fecha_creacion}}</p>
+        </div>
+        <div class="control-group">
+          <!-- Hora de creación-->
+          <label class="control-label" for="Hora de creación">Hora de creación:</label>
+          <p>{{obs.hora_creacion}}</p>
+        </div>
+        <div class="control-group">
+          <!-- Fecha de levantamiento-->
+          <label class="control-label" for="Fecha de levantamiento">Fecha de levantamiento:</label>
+          <p>{{obs.fecha_levatamiento}}</p>
+        </div>
+        <div class="control-group">
+          <!-- Hora de levantamiento-->
+          <label class="control-label" for="Hora de levantamiento">Hora de levantamiento:</label>
+          <p>{{obs.hora_levantamiento}}</p>
+        </div>
+        <div class="control-group">
+          <!-- Estado-->
+          <label class="control-label" for="Estado">Estado:</label>
+          <p>{{obs.estado}}</p>
+        </div>
+
+        <div class="control-group">
+          <!-- Observacion-input-->
+          <label class="control-label" for="Asunto">Asunto de la observacion:</label>
+          <p>{{obs.asunto}}</p>
+        </div>
+        <div class="control-group">
+          <!-- Observacion-input-->
+          <label class="control-label" for="Observacion">Contenido de la observacion:</label>
+          <p>{{obs.contenido}}</p>
+        </div>
+        <!-- Comentario-input-->
+        <template v-for="c in comentarios">
+          <div class="control-group">
+            <label class="control-label" for="Comentario">{{'Comentario n° '+c.orden+': '+c.fecha+' '+c.hora}}
+              <br/>{{'Por '+c.username}}
+            </label>
+            <p>{{c.contenido}}</p>
+          </div>
+        </template>
+
+        <div class="control-group">
+          <label class="control-label" for="NuevoCom">Nuevo comentario:</label>
+          <input type="text" id="Comentario" v-model="nuevoComentario" name="Comentario" placeholder=""
+            class="input-xlarge" />
+        </div>
+        <div class="control-group">
+          <!-- Button -->
+          <div class="controls">
+            <button class="btn btn-success" @click="responderComentario">
+              Responder comentario
+            </button>
+            <span class="input-group-text"><i class="fas fa-file-pdf"></i></span>
+          </div>
+        </div>
+      </fieldset>
+    </form>
+    <div class="control-group">
+      <!-- Button -->
+      <div class="controls">
+        <a href="/listObs.html"><button class="btn btn-success">
+            Volver a la lista de observaciones
+          </button></a>
       </div>
     </div>
-    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
-    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-    <script src="js/script_22.js"></script>
-  </body>
+
+    <div class="control-group">
+      <!-- Button -->
+      <div class="controls">
+        <button class="btn btn-success" @click="marcarResuelto">
+          Marcar como resuelto
+        </button>
+        <span class="input-group-text"><i class="fas fa-file-pdf"></i></span>
+      </div>
+    </div>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+  <script src="js/script_22.js"></script>
+</body>
+
 </html>

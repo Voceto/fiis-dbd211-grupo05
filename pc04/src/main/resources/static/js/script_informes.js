@@ -19,6 +19,9 @@ const app = new Vue({
             this.listaBand=false;
             axios.post('/obtenerInforme',{id:p1}).then(response => (this.informe=response.data));
             localStorage.setItem("cod_inf",p1);
+        },
+        filtrarInforme:function(){
+            axios.post('/filtrarinforme',{codigo:this.cod_act,codigo_tipo:this.cod_tipo_act,fmin:document.getElementById("Fecha desde").value,fmax:document.getElementById("Fecha hasta").value}).then(response=>(this.informes=response.data));
         }
     },
     mounted () {

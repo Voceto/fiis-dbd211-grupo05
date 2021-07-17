@@ -50,7 +50,7 @@
         <div class="control-group">
           <!-- Button -->
           <div class="controls">
-            <button class="btn btn-success">Filtrar</button>
+            <button @click="filtrarObs" class="btn btn-success">Filtrar</button>
             <span class="input-group-text"></span>
           </div>
         </div>
@@ -59,6 +59,7 @@
             <thead>
               <tr>
                 <th scope="col">Código</th>
+                <th scope="col">Asunto</th>
                 <th scope="col">Hora de creación</th>
                 <th scope="col">Fecha de creación</th>
                 <th scope="col">Estado</th>
@@ -70,6 +71,7 @@
                   <td><div @click="verObs(o.id)">
                       <a href="/22.html">{{'OBS'+o.id}}</a>
                     </div></td>
+                    <td>{{o.asunto}}</td>
                   <td>
                     <div @click="verObs(o.id)">
                         {{o.hora_creacion}}</div>

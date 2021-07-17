@@ -1,58 +1,86 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Proyectos</title>
-    <link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.min.css" rel="stylesheet" id="bootstrap-css">
-    <script src="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/js/bootstrap.min.js"></script>
     <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
-    <link rel="stylesheet" href="css/creacion_observacion.css">
-</head>
-<body>
+    <link
+      href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.min.css"
+      rel="stylesheet"
+      id="bootstrap-css"
+    />
+    <script src="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="css/creacion_observacion.css" />
+  </head>
+  <body>
     <header>
-        <div class="menu">
-          <img src="images/logo.png" alt="">
-          <nav>
-              <ul>
-                <li><a href="#">Inicio</a></li>
-                <li><a href="#">Mis Proyectos</a></li>
-                <li><a href="#">Logout</a></li>
-                <img src="images/imagen.png" alt="">
-              </ul>
-          </nav>
-        </div>
-      </header>
-      <div id="creaobs">
-        <h2>Observación</h2>
-        <h3>Observación del informe</h3>
-  
-
-   
-          <div class="control-group">
-            <!-- Observacion-->
-            <label class="control-label" for="Comentario"></label>
-            <div class="controls">
-              <input type="text" v-model="observacionRequest.comentario" id="Observacion" name="Observacion" placeholder="Escribir observación aqui ...." class="input-xlarge">
-            </div>
-            </div>
-  
-            <div class="control-group">
-              <!-- Enviar observacion -->
-              <div class="controls">
-            <a href="/listObs.html">
-              <button  @click="crearObserv" class="btn btn-success">Enviar observación   </button>
-            </a>
-                                
-                <span class="input-group-text"></span>
-              </div>
-            </div>
-  
-  
+      <div class="menu">
+        <img src="images/logo.png" alt="" />
+        <nav>
+          <ul>
+            <li><a href="#">Inicio</a></li>
+            <li><a href="#">Mis Proyectos</a></li>
+            <li><a href="#">Logout</a></li>
+            <img src="images/imagen.png" alt="" />
+          </ul>
+        </nav>
       </div>
-      <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    </header>
+    <div id="creaobs">
+      <h2>Observación</h2>
+      <h3>Observación del informe</h3>
+      <datalist id="asuntos">
+        <option>Informacion faltante en el informe</option>
+        <option>Error en la digitalización del informe</option>
+        <option>Opinion o persepectiva del informe</option>
+      </datalist>
+      <div class="control-group">
+        <!-- Observacion-->
+        <label class="control-label" for="Asunto"></label>
+        <div class="controls">
+          <input
+            type="text"
+            v-model="observacionRequest.asunto"
+            id="Asunto"
+            name="Asunto"
+            placeholder="Escribir asunto aqui ...."
+            list="asuntos"
+            class="input-xlarge"
+          />
+        </div>
+      </div>
+      <div class="control-group">
+        <!-- Observacion-->
+        <label class="control-label" for="Contenido"></label>
+        <div class="controls">
+          <input
+            type="text"
+            v-model="observacionRequest.contenido"
+            id="Observacion"
+            name="Observacion"
+            placeholder="Escribir observación aqui ...."
+            class="input-xlarge"
+          />
+        </div>
+      </div>
+
+      <div class="control-group">
+        <!-- Enviar observacion -->
+        <div class="controls">
+          <a href="/listObs.html">
+            <button @click="crearObserv" class="btn btn-success">
+              Enviar observación
+            </button>
+          </a>
+
+          <span class="input-group-text"></span>
+        </div>
+      </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <script src="js/script_crearObs.js"></script>
-</body>
+  </body>
 </html>

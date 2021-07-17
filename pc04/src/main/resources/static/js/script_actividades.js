@@ -20,7 +20,7 @@ const app = new Vue({
             localStorage.setItem("cod_act",p1);
             localStorage.setItem("cod_tipo_act",p2);
         },
-        filtrarProyecto:function(){
+        filtrarActividad:function(){
             axios.post('/filtrarActividades',{id:this.idProyecto,fmin:document.getElementById("Fecha desde").value,fmax:document.getElementById("Fecha hasta").value}).then(response=>(this.actividades=response.data));
         },
     },

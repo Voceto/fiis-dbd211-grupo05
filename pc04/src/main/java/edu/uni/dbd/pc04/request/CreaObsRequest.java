@@ -1,20 +1,30 @@
 package edu.uni.dbd.pc04.request;
 
 public class CreaObsRequest {
-    private String comentario;
+    private String asunto;
+    private String contenido;
     private String inf_id;
 
-    public CreaObsRequest(String comentario, String inf_id) {
-        this.comentario = comentario;
+    public CreaObsRequest(String asunto, String contenido, String inf_id) {
+        this.asunto = asunto;
+        this.contenido = contenido;
         this.inf_id = inf_id;
     }
 
-    public String getComentario() {
-        return comentario;
+    public String getAsunto() {
+        return asunto;
     }
 
-    public void setComentario(String comentario) {
-        this.comentario = comentario;
+    public void setAsunto(String asunto) {
+        this.asunto = asunto;
+    }
+
+    public String getContenido() {
+        return contenido;
+    }
+
+    public void setContenido(String contenido) {
+        this.contenido = contenido;
     }
 
     public String getInf_id() {

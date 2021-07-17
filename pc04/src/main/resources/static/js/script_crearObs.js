@@ -2,7 +2,7 @@ const app = new Vue({
     el:'#creaobs',
     data:{
         cod_info:localStorage.getItem("cod_inf"),
-        observacionRequest:{comentario:"",inf_id:""},
+        observacionRequest:{aasunto:"",contenido:"",inf_id:""},
         resp:""
     },
     methods:{
