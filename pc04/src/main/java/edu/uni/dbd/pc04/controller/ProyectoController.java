@@ -2,6 +2,7 @@ package edu.uni.dbd.pc04.controller;
 
 import edu.uni.dbd.pc04.bean.*;
 import edu.uni.dbd.pc04.request.ActividadRequest;
+import edu.uni.dbd.pc04.request.IdFechaRequest;
 import edu.uni.dbd.pc04.request.IdRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -60,6 +61,27 @@ public class ProyectoController {
                 "WHERE R.USERNAME = ?";
         PreparedStatement pst = conn.prepareStatement(sql);
         pst.setString(1,p.getId());
+        ResultSet rs = pst.executeQuery();
+        while(rs.next()){
+            a.add(new ProyectoLResponse(rs.getString(1),rs.getString(2),rs.getString(3),rs.getString(4)));
+        }
+        rs.close();
+        pst.close();
+        conn.close();
+        return a;
+    }
+    @PostMapping("/filtroProyectos")
+    public ArrayList<ProyectoLResponse> filtrarProyectos(@RequestBody IdFechaRequest p)throws Exception{
+        ArrayList<ProyectoLResponse> a =new ArrayList<>();
+        Connection conn = template.getDataSource().getConnection();
+        String sql= "SELECT P.CODIGO, P.NOMBRE,COALESCE(TO_CHAR(P.FECHA_INICIO_REAL,'DD/MM/YYYY'),'No iniciado'), P.ESTADO " +
+                "FROM PROYECTO P " +
+                "JOIN REPEMPRESA R ON R.DNI = P.DNI_REPCLIENTE " +
+                "WHERE R.USERNAME = ? AND P.FECHA_INICIO_REAL BETWEEN TO_DATE(?,'YYYY-MM-DD')AND TO_DATE(?,'YYYY-MM-DD')";
+        PreparedStatement pst = conn.prepareStatement(sql);
+        pst.setString(1,p.getId());
+        pst.setString(2,p.getFmin());
+        pst.setString(3,p.getFmax());
         ResultSet rs = pst.executeQuery();
         while(rs.next()){
             a.add(new ProyectoLResponse(rs.getString(1),rs.getString(2),rs.getString(3),rs.getString(4)));
